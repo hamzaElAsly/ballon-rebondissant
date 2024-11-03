@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du ballon</title>
+    <link rel="stylesheet" href="jeux_Ballon.css">
+</head>
+<body>
+    <h1>Jeu du ballon rebondissant</h1>
+    <section style="display: flex; gap: 20px; ">
+        <fieldset>
+            <legend>Tracer le terrain :</legend>
+            <table>
+                <tr>
+                    <td><label>Largeur terrain</label></td>
+                    <td><input value="500" id="latrn" type="number" placeholder="entrez Largeur"> <span style="color: red;">*</span></td>
+                </tr>
+                <tr>
+                    <td><label>hauteur terrain</label></td>
+                    <td><input value="200" id="hautrn" type="number"placeholder="entrez hauteur"> <span style="color: red;">*</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Couleur terrain</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="colorT" onclick="colorT = this.value" value="green"><label>Vert</label>
+                        <input type="radio" name="colorT" onclick="colorT = this.value" value="red"><label>Rouge</label>
+                        <input type="radio" name="colorT" onclick="colorT = this.value" value="black"><label>Noire</label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Dessiner le ballon: </legend>
+            <table>
+                <tr>
+                    <td><label>Diametre Ballon</label></td>
+                    <td><input value="50" id="Demrblon" type="number"> <span style="color: red;">*</span></td>
+                </tr>
+                <tr>
+                    <td><label>Couleur de remplissage:</label></td>
+                    <td>
+                        <input type="radio" name="colorC" onclick="colorC = this.value" value="gold"> <label >Dorée</label>
+                        <input type="radio" name="colorC" onclick="colorC = this.value" value="Silver"> <label >Argenté</label>
+                        <input type="radio" name="colorC" onclick="colorC = this.value" value="Brown"> <label >Bronze</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Couleur de contour</label></td>
+                    <td>
+                        <input type="radio" name="colorBlon" onclick="colorBlon = this.value" value="white"><label>Blanc</label>
+                        <input type="radio" name="colorBlon" onclick="colorBlon = this.value" value="blue"><label>Bleu</label>
+                        <input type="radio" name="colorBlon" onclick="colorBlon = this.value" value="Orange"> <label>Orange</label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Animer le ballon :</legend>
+            <table>
+                <tr>
+                    <td><label>Position depart X</label></td>
+                    <td><input type="number" id="posx"  value="10"></td>
+                </tr>
+                    <tr>
+                    <td><label>Position depart Y</label></td>
+                    <td><input type="number" id="posy"  value="10"></td>
+                    </tr>
+                   <tr>
+                       <td><label>Vitesse de mouvment:</label> </td>
+                       <td><select id="speedV"> 
+                        <option value="lent">lent</option>
+                        <option value="moyenne" selected>Moyenne</option>
+                        <option value="rapide">rapide</option>
+                    </select> <span style="color: red;">*</span>
+                        </td>
+                   </tr>
+            </table>
+        </fieldset>
+    </section><br>
+    <button type="button" onclick="game()">Dessiner</button>
+    <button type="button" onclick="Démarrer()">Démarrer l'animation</button>
+    <button  type="button" onclick="stopDémarrer()">Suspendre l'animation</button>
+    <button type="button" onclick="Arrêter()" >Arrêter l'animation"</button><br><br>
+
+    <div id="train" style=" position: relative; display: flex;"> 
+        <div id="balon" style="  border-radius: 50%;  background-color: red;position: absolute; border: white 2px solid;"></div>
+    </div>
+</body>
+<script>
+        let trn = document.getElementById("train");
+        let bln = document.getElementById("balon");
+        var id;
+        function game(){
+            trnwidth =document.getElementById('latrn').value;
+            trnheight =document.getElementById('hautrn').value;
+
+            // document.querySelector('.train').style=`width:${trnwidth}px;height:${trnheight}px;`
+            trn.style.width = trnwidth+'px';
+            trn.style.height = trnheight+'px';
+            trn.style.background = colorT;
+
+            balltaill = document.getElementById('Demrblon').value;
+            posX = (document.getElementById("posx").value * trnwidth)/100 ;
+            posY = (document.getElementById("posy").value * trnheight)/100;
+            bln.style.width = balltaill +'px';
+            bln.style.height = balltaill +'px';
+            bln.style.background = colorC;
+            bln.style.borderColor = colorBlon;
+
+            vtss = document.getElementById("speedV").value;
+            if(vtss == "lent"){
+                vtssX = 1;
+                vtssY = 1; 
+            }else if(vtss == "moyenne"){
+                vtssX = 2;
+                vtssY = 2;
+            }else if(vtss == "rapide"){
+                vtssX = 3;
+                vtssY = 3;
+            }   
+        }
+        function Démarrer(){
+            clearInterval(id);
+            id = setInterval(ballon, 2)
+        function ballon(){
+            
+            if(posX > trnwidth - balltaill){
+                vtssX=-vtssX
+            }
+            if(posX < 0){
+                vtssX=-vtssX
+            }
+            if(posY > trnheight - balltaill){
+                vtssY=-vtssY
+            }
+            if(posY < 0){
+                vtssY=-vtssY
+            }
+            bln.style.left = (posX+vtssX)+'px'
+            bln.style.top = (posY+vtssY)+'px';
+            posX += vtssX;
+            posY += vtssY;
+        }
+        }
+         function stopDémarrer(){
+            clearInterval(id);
+        }
+        function Arrêter(){
+            document.getElementById('posx').value="";
+            document.getElementById("posy").value="";
+            // trn.style="visibility:hidden;";
+            trn.style.background = "white";
+            bln.style.backgroundColor ="white";
+            bln.style.borderColor = "white ";
+            posX += vtssX=0;
+            posY += vtssY=0;
+            vtssX=0;
+            vtssY=0;
+            trn.style.width="";
+            trn.style.height="";
+          
+        }
+    
+        </script>
+</html>

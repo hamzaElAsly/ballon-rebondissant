@@ -1,0 +1,109 @@
+ /* Style de base pour le corps de la page */
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Section contenant les fieldsets */
+section {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Style des fieldsets */
+fieldset {
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Legend pour le titre de chaque section */
+legend {
+    font-weight: bold;
+    color: #4CAF50;
+    padding: 0 10px;
+}
+
+/* Style pour les labels */
+label {
+    font-size: 1em;
+    color: #333;
+}
+
+/* Style pour les inputs et les boutons radio */
+input[type="number"], select, input[type="radio"] {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Table pour aligner les labels et les inputs */
+table {
+    width: 100%;
+}
+
+/* Style des boutons */
+button {
+    font-size: 1em;
+    padding: 10px 15px;
+    margin: 5px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Changer la couleur des boutons au survol */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Style du terrain */
+#train {
+    margin-top: 20px;
+    border: 2px dashed #333;
+    border-radius: 10px;
+    background-color: #ddd;
+    width: 500px; /* Largeur par défaut */
+    height: 200px; /* Hauteur par défaut */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Style du ballon */
+#balon {
+    width: 50px; /* Diamètre par défaut */
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    border: 2px solid white;
+}
+
+/* Style pour les champs obligatoires */
+span {
+    color: red;
+}
