@@ -1,5 +1,4 @@
- /* Style de base pour le corps de la page */
- body {
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
@@ -8,14 +7,12 @@
     padding: 20px;
 }
 
-/* Titre principal */
 h1 {
     color: #4CAF50;
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-/* Section contenant les fieldsets */
 section {
     display: flex;
     gap: 20px;
@@ -33,7 +30,6 @@ fieldset {
     width: 300px;
 }
 
-/* Legend pour le titre de chaque section */
 legend {
     font-weight: bold;
     color: #4CAF50;
@@ -45,8 +41,6 @@ label {
     font-size: 1em;
     color: #333;
 }
-
-/* Style pour les inputs et les boutons radio */
 input[type="number"], select, input[type="radio"] {
     margin-top: 5px;
     padding: 5px;
@@ -60,7 +54,6 @@ table {
     width: 100%;
 }
 
-/* Style des boutons */
 button {
     font-size: 1em;
     padding: 10px 15px;
@@ -78,7 +71,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Style du terrain */
 #train {
     margin-top: 20px;
     border: 2px dashed #333;
@@ -93,7 +85,6 @@ button:hover {
     margin: 0 auto;
 }
 
-/* Style du ballon */
 #balon {
     width: 50px; /* Diamètre par défaut */
     height: 50px;
@@ -103,7 +94,6 @@ button:hover {
     border: 2px solid white;
 }
 
-/* Style pour les champs obligatoires */
 span {
     color: red;
 }
